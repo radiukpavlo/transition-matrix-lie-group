@@ -267,8 +267,13 @@ def main():
     print(f"Using device: {device}\n")
 
     # Create output directories
-    os.makedirs('workflow/data', exist_ok=True)
-    os.makedirs('results', exist_ok=True)
+    # Use paths relative to project root (parent of workflow)
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    output_data_dir = os.path.join(project_root, 'outputs', 'data')
+    results_dir = os.path.join(project_root, 'outputs', 'results')
+    
+    os.makedirs(output_data_dir, exist_ok=True)
+    os.makedirs(results_dir, exist_ok=True)
 
     # =========================================================================
     # Step 1: Load MNIST Data
@@ -322,7 +327,7 @@ def main():
     test_accuracy = evaluate_cnn(model, test_loader, device)
 
     # Save trained model
-    model_path = 'workflow/data/cnn_mnist.pth'
+    model_path = os.path.join(output_data_dir, 'cnn_mnist.pth')
     torch.save(model.state_dict(), model_path)
     print(f"\n✓ Model saved to: {model_path}")
 
@@ -370,7 +375,7 @@ def main():
     T_old = compute_transition_matrix(A_train, B_train)
 
     # Save T_old
-    t_old_path = 'workflow/data/t_old_mnist.npy'
+    t_old_path = os.path.join(output_data_dir, 't_old_mnist.npy')
     np.save(t_old_path, T_old)
     print(f"\n✓ T_old saved to: {t_old_path}")
     print(f"  T_old shape: {T_old.shape}")
@@ -398,7 +403,7 @@ def main():
     metrics = calculate_metrics(B_test, B_test_reconstructed)
 
     # Save metrics
-    metrics_path = 'results/baseline_metrics.json'
+    metrics_path = os.path.join(results_dir, 'baseline_metrics.json')
     with open(metrics_path, 'w') as f:
         json.dump(metrics, f, indent=2)
 

@@ -39,7 +39,7 @@ np.random.seed(42)
 torch.manual_seed(42)
 
 # Configuration
-DATA_DIR = Path(__file__).parent / "data"
+DATA_DIR = Path(__file__).parent.parent / "outputs" / "data"
 LAMBDA_REG = 0.5  # Regularization weight for symmetry constraint
 N_SAMPLES = 10000  # Number of samples to use for solving (subset for efficiency)
 BATCH_SIZE = 500  # Batch size for feature extraction

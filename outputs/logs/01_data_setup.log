@@ -1,0 +1,106 @@
+======================================================================
+STEP 1: Data & Environment Setup
+======================================================================
+
+1. SYNTHETIC MATRICES VERIFICATION
+----------------------------------------------------------------------
+
+Matrix A (Formal Model - FM):
+  Shape: (15, 5)
+  Expected: (15, 5)
+  Data type: float64
+  ✓ Shape verification passed!
+
+Matrix B (Mental Model - MM):
+  Shape: (15, 4)
+  Expected: (15, 4)
+  Data type: float64
+  ✓ Shape verification passed!
+
+Matrix A - First 3 rows:
+  Row 0: [ 2.8 -1.8 -2.8  1.3  0.4]
+  Row 1: [ 2.9 -1.9 -2.9  1.4  0.5]
+  Row 2: [ 3.  -2.  -3.   1.5  0.6]
+
+Matrix B - First 3 rows:
+  Row 0: [ 1.95930752 -1.38111994 -1.72964098 -1.97939   ]
+  Row 1: [ 1.99818664 -1.91285528 -1.97511053 -1.84391   ]
+  Row 2: [ 1.9988961  -1.99960508 -1.99891677 -1.99937   ]
+
+
+2. MNIST DATASET VERIFICATION
+----------------------------------------------------------------------
+Loading MNIST dataset (this may take a moment)...
+
+Training Data:
+  Shape: (60000, 1, 28, 28)
+  Expected: (60000, 1, 28, 28)
+  Data type: float32
+  Value range: [0.000, 1.000]
+  ✓ Shape verification passed!
+
+Training Labels:
+  Shape: (60000,)
+  Unique classes: [0 1 2 3 4 5 6 7 8 9]
+
+Test Data:
+  Shape: (10000, 1, 28, 28)
+  Expected: (10000, 1, 28, 28)
+  Data type: float32
+  Value range: [0.000, 1.000]
+  ✓ Shape verification passed!
+
+Test Labels:
+  Shape: (10000,)
+  Unique classes: [0 1 2 3 4 5 6 7 8 9]
+
+Class Distribution (Training Set):
+  Class 0:  5923 samples (9.9%)
+  Class 1:  6742 samples (11.2%)
+  Class 2:  5958 samples (9.9%)
+  Class 3:  6131 samples (10.2%)
+  Class 4:  5842 samples (9.7%)
+  Class 5:  5421 samples (9.0%)
+  Class 6:  5918 samples (9.9%)
+  Class 7:  6265 samples (10.4%)
+  Class 8:  5851 samples (9.8%)
+  Class 9:  5949 samples (9.9%)
+
+Class Distribution (Test Set):
+  Class 0:   980 samples (9.8%)
+  Class 1:  1135 samples (11.3%)
+  Class 2:  1032 samples (10.3%)
+  Class 3:  1010 samples (10.1%)
+  Class 4:   982 samples (9.8%)
+  Class 5:   892 samples (8.9%)
+  Class 6:   958 samples (9.6%)
+  Class 7:  1028 samples (10.3%)
+  Class 8:   974 samples (9.7%)
+  Class 9:  1009 samples (10.1%)
+
+
+3. SAVING SYNTHETIC MATRICES
+----------------------------------------------------------------------
+Synthetic matrices saved to: D:\GitHub\transition-matrix-lie-group\data\synthetic.npz
+  ✓ Save verification passed!
+
+
+======================================================================
+SUMMARY
+======================================================================
+
+✓ All verifications passed successfully!
+
+Datasets prepared:
+  • Synthetic matrices: A (15, 5), B (15, 4)
+  • MNIST training: (60000, 1, 28, 28)
+  • MNIST test: (10000, 1, 28, 28)
+
+Output files:
+  • D:\GitHub\transition-matrix-lie-group\data\synthetic.npz
+
+Next steps:
+  • Matrices are ready for subsequent experiments
+  • Use 'np.load()' to load synthetic matrices
+  • Use 'mnist_loader.load_mnist()' to reload MNIST data
+======================================================================

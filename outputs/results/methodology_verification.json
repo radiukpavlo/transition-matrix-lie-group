@@ -1,0 +1,75 @@
+{
+  "step": "3_methodology_verification",
+  "timestamp": "2026-01-19 20:08:16",
+  "data": {
+    "A_shape": [
+      15,
+      5
+    ],
+    "B_shape": [
+      15,
+      4
+    ],
+    "N": 15,
+    "d_A": 5,
+    "d_B": 4
+  },
+  "generators": {
+    "J_A_shape": [
+      5,
+      5
+    ],
+    "J_B_shape": [
+      4,
+      4
+    ],
+    "method": "bridge_mds",
+    "n_components": 2,
+    "antisymmetry_A": 1.6793099969305988e-16,
+    "antisymmetry_B": 9.53611089622614e-17
+  },
+  "T_old": {
+    "shape": [
+      4,
+      5
+    ],
+    "method": "pseudoinverse",
+    "reconstruction_error": 73.73727717985041,
+    "symmetry_defect": 302.9163880688779,
+    "total_objective": 225.19547121428934
+  },
+  "T_new": {
+    "shape": [
+      4,
+      5
+    ],
+    "method": "equivariant_solver",
+    "lambda_reg": 0.5,
+    "reconstruction_error": 191.94677323019295,
+    "symmetry_defect": 4.859817909687263,
+    "total_objective": 194.37668218503657,
+    "solver_info": {
+      "iterations": 11,
+      "elapsed_time": 0.0010607242584228516
+    }
+  },
+  "comparison": {
+    "objective_improvement_pct": 13.685350270621793,
+    "symmetry_improvement_pct": 98.39565698618385,
+    "defect_old": 17.404493329852436,
+    "defect_new": 2.204499469196412,
+    "defect_reduction_pct": 87.33373372372051
+  },
+  "tests": {
+    "passed": [
+      "Generator shapes",
+      "Solver completion",
+      "Symmetry defect reduction",
+      "Total objective improvement",
+      "Numerical stability"
+    ],
+    "failed": [],
+    "total": 5,
+    "success_rate": 1.0
+  }
+}

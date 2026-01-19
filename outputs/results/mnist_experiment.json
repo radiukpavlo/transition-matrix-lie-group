@@ -1,0 +1,129 @@
+{
+  "experiment": "mnist_rotation_robustness",
+  "n_samples": 1000,
+  "rotation_angles": [
+    -15.0,
+    -12.857142857142858,
+    -10.714285714285715,
+    -8.571428571428571,
+    -6.428571428571429,
+    -4.2857142857142865,
+    -2.1428571428571423,
+    0.0,
+    2.1428571428571423,
+    4.285714285714285,
+    6.428571428571427,
+    8.57142857142857,
+    10.714285714285715,
+    12.857142857142858,
+    15.0
+  ],
+  "baseline": {
+    "ssim_mean": 0.1680709432485956,
+    "ssim_std": 0.051414208012852264,
+    "psnr_mean": 12.002616882324219,
+    "psnr_std": 1.1385295391082764,
+    "mse_mean": 0.0653524100780487,
+    "mse_std": 0.01838499680161476
+  },
+  "equivariant": {
+    "ssim_mean": 0.007289509448897333,
+    "ssim_std": 0.006354597539232434,
+    "psnr_mean": 10.580636680138928,
+    "psnr_std": 1.4151307314495607,
+    "mse_mean": 0.09212441980114426,
+    "mse_std": 0.029660332526021727
+  },
+  "by_angle": {
+    "-15.0deg": {
+      "baseline_ssim": 0.16939381966382347,
+      "baseline_psnr": 12.00101089477539,
+      "equivariant_ssim": 0.007412322217826722,
+      "equivariant_psnr": 10.579114479425309
+    },
+    "-12.9deg": {
+      "baseline_ssim": 0.16942808138814056,
+      "baseline_psnr": 12.003195762634277,
+      "equivariant_ssim": 0.007441839769168,
+      "equivariant_psnr": 10.581715917993707
+    },
+    "-10.7deg": {
+      "baseline_ssim": 0.1690980164140502,
+      "baseline_psnr": 12.005987167358398,
+      "equivariant_ssim": 0.007443434652893372,
+      "equivariant_psnr": 10.583330434083983
+    },
+    "-8.6deg": {
+      "baseline_ssim": 0.16899815862073936,
+      "baseline_psnr": 12.00770092010498,
+      "equivariant_ssim": 0.007461189918570785,
+      "equivariant_psnr": 10.588875187560522
+    },
+    "-6.4deg": {
+      "baseline_ssim": 0.16894082829087761,
+      "baseline_psnr": 12.00773811340332,
+      "equivariant_ssim": 0.007357726730551987,
+      "equivariant_psnr": 10.592240484709583
+    },
+    "-4.3deg": {
+      "baseline_ssim": 0.16885297667093016,
+      "baseline_psnr": 12.010953903198242,
+      "equivariant_ssim": 0.007310820448265212,
+      "equivariant_psnr": 10.593766849217827
+    },
+    "-2.1deg": {
+      "baseline_ssim": 0.1687545293791905,
+      "baseline_psnr": 12.011256217956543,
+      "equivariant_ssim": 0.007393865654013756,
+      "equivariant_psnr": 10.587520094178673
+    },
+    "0.0deg": {
+      "baseline_ssim": 0.16832224669559318,
+      "baseline_psnr": 12.003451347351074,
+      "equivariant_ssim": 0.007468582740585803,
+      "equivariant_psnr": 10.557799783198757
+    },
+    "2.1deg": {
+      "baseline_ssim": 0.1678263757958639,
+      "baseline_psnr": 12.00753402709961,
+      "equivariant_ssim": 0.007301913118702393,
+      "equivariant_psnr": 10.584646664206906
+    },
+    "4.3deg": {
+      "baseline_ssim": 0.16732471476466848,
+      "baseline_psnr": 12.00439453125,
+      "equivariant_ssim": 0.007278601513560959,
+      "equivariant_psnr": 10.590102936975393
+    },
+    "6.4deg": {
+      "baseline_ssim": 0.16702457188172595,
+      "baseline_psnr": 11.998956680297852,
+      "equivariant_ssim": 0.007275325886667396,
+      "equivariant_psnr": 10.581847188021287
+    },
+    "8.6deg": {
+      "baseline_ssim": 0.16694216144382745,
+      "baseline_psnr": 11.998156547546387,
+      "equivariant_ssim": 0.007290222174996412,
+      "equivariant_psnr": 10.577297021016191
+    },
+    "10.7deg": {
+      "baseline_ssim": 0.16676135122362717,
+      "baseline_psnr": 11.995305061340332,
+      "equivariant_ssim": 0.007175928365482125,
+      "equivariant_psnr": 10.574983756094685
+    },
+    "12.9deg": {
+      "baseline_ssim": 0.16675292702213054,
+      "baseline_psnr": 11.993250846862793,
+      "equivariant_ssim": 0.00691739798569375,
+      "equivariant_psnr": 10.57111406848211
+    },
+    "15.0deg": {
+      "baseline_ssim": 0.1666433894737453,
+      "baseline_psnr": 11.990358352661133,
+      "equivariant_ssim": 0.006813470556481324,
+      "equivariant_psnr": 10.565195336918983
+    }
+  }
+}

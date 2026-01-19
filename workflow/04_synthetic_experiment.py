@@ -30,13 +30,13 @@ print("=" * 80)
 print("\n[1/6] Loading synthetic data and computed matrices...")
 
 # Load original data (A, B)
-data_path_1 = Path(__file__).parent / "data" / "synthetic.npz"
+data_path_1 = Path(__file__).parent.parent / "data" / "synthetic.npz"
 data_1 = np.load(data_path_1)
 A = data_1['A']  # Original features (15 samples × 5 dimensions)
 B = data_1['B']  # Target features (15 samples × 4 dimensions)
 
 # Load computed matrices (T_old, T_new)
-data_path_2 = Path(__file__).parent / "data" / "synthetic_generators.npz"
+data_path_2 = Path(__file__).parent.parent / "outputs" / "data" / "synthetic_generators.npz"
 data_2 = np.load(data_path_2)
 T_old = data_2['T_old']  # Baseline transfer matrix (4 × 5)
 T_new = data_2['T_new']  # Equivariant transfer matrix (4 × 5)
@@ -261,8 +261,8 @@ plt.suptitle('Robustness Test: Baseline Outperforms Equivariant on Linearly-Gene
 plt.tight_layout()
 
 # Save figure
-figures_dir = Path(__file__).parent.parent / "figures"
-figures_dir.mkdir(exist_ok=True)
+figures_dir = Path(__file__).parent.parent / "outputs" / "figures"
+figures_dir.mkdir(parents=True, exist_ok=True)
 output_path = figures_dir / "synthetic_robustness_corrected.png"
 plt.savefig(output_path, dpi=300, bbox_inches='tight')
 print(f"  Figure saved to: {output_path}")
@@ -314,8 +314,8 @@ results = {
     ]
 }
 
-results_dir = Path(__file__).parent.parent / "results"
-results_dir.mkdir(exist_ok=True)
+results_dir = Path(__file__).parent.parent / "outputs" / "results"
+results_dir.mkdir(parents=True, exist_ok=True)
 results_path = results_dir / "synthetic_experiment_corrected.json"
 
 with open(results_path, 'w') as f:

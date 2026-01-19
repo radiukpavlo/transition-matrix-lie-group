@@ -1,0 +1,139 @@
+C:\Users\radiu\AppData\Roaming\Python\Python313\site-packages\sklearn\manifold\_mds.py:677: FutureWarning: The default value of `n_init` will change from 4 to 1 in 1.9.
+  warnings.warn(
+======================================================================
+STEP 3: METHODOLOGY VERIFICATION (EQUIVARIANT SOLVER)
+======================================================================
+Project root: D:\GitHub\transition-matrix-lie-group
+Timestamp: 2026-01-19 20:08:15
+
+1. Loading synthetic data...
+----------------------------------------------------------------------
+  Loaded A: (15, 5) (Formal Model features)
+  Loaded B: (15, 4) (Mental Model features)
+  Sample size: N = 15
+
+2. Computing baseline transition matrix (T_old)...
+----------------------------------------------------------------------
+  T_old shape: (4, 5) (d_B × d_A)
+  T_old reconstruction error: ||B^T - T_old A^T||_F^2 = 7.373728e+01
+
+3. Estimating generators using bridge method (MDS + Decoder)...
+----------------------------------------------------------------------
+Estimating generators via bridge method (MDS + decoder)
+  Input shapes: A (15, 5), B (15, 4), T (4, 5)
+  MDS embedding: (15, 2)
+  Bridge method complete!
+  J^A shape: (5, 5)
+  J^B shape: (4, 4)
+
+  Generator shapes: J^A (5, 5), J^B (4, 4)
+  Antisymmetry check (should be small):
+    ||J^A + (J^A)^T||_F = 1.679310e-16
+    ||J^B + (J^B)^T||_F = 9.536111e-17
+
+4. Computing symmetry defect for baseline T_old...
+----------------------------------------------------------------------
+  Symmetry defect (T_old): ||T_old J^A - J^B T_old||_F = 1.740449e+01
+
+5. Solving for T_new with equivariant constraint (λ=0.5)...
+----------------------------------------------------------------------
+Initialized EquivariantSolver:
+  Features: A (15, 5), B (15, 4)
+  Generators: J^A (5, 5), J^B (4, 4)
+  Regularization: λ = 0.5
+  T will have shape (4, 5)
+  Total unknowns: 20
+
+Solving equivariant system with LSQR...
+  System size: 80 × 20
+  Max iterations: 1000, tolerance: 1e-08
+ 
+LSQR            Least-squares solution of  Ax = b
+The matrix A has 80 rows and 20 columns
+damp = 0.00000000000000e+00   calc_var =        0
+atol = 1.00e-08                 conlim = 1.00e+08
+btol = 1.00e-08               iter_lim =     1000
+ 
+   Itn      x[0]       r1norm     r2norm   Compatible    LS      Norm A   Cond A
+     0  0.00000e+00   1.362e+01  1.362e+01    1.0e+00  2.1e-01
+     1  8.12504e-02   1.319e+01  1.319e+01    9.7e-01  1.7e-01   1.2e+01  1.0e+00
+     2  2.33295e-01   1.256e+01  1.256e+01    9.2e-01  4.1e-02   1.5e+01  3.1e+00
+     3  2.94804e-01   1.239e+01  1.239e+01    9.1e-01  2.3e-02   1.6e+01  5.5e+00
+     4  2.93334e-01   1.237e+01  1.237e+01    9.1e-01  2.5e-02   1.8e+01  6.8e+00
+     5  3.17125e-02   1.208e+01  1.208e+01    8.9e-01  1.4e-02   2.2e+01  2.0e+01
+     6  3.50361e-02   1.207e+01  1.207e+01    8.9e-01  3.2e-03   2.2e+01  2.1e+01
+     7  9.14179e-02   1.206e+01  1.206e+01    8.9e-01  4.0e-03   2.2e+01  2.4e+01
+     8  1.22568e-01   1.204e+01  1.204e+01    8.8e-01  1.3e-03   2.3e+01  3.2e+01
+     9  9.18433e-02   1.204e+01  1.204e+01    8.8e-01  6.4e-04   2.3e+01  4.5e+01
+    10 -1.82247e-01   1.202e+01  1.202e+01    8.8e-01  2.1e-06   2.3e+01  1.0e+02
+    11 -1.82247e-01   1.202e+01  1.202e+01    8.8e-01  2.0e-09   2.7e+01  1.2e+02
+ 
+LSQR finished
+The least-squares solution is good enough, given atol     
+ 
+istop =       2   r1norm = 1.2e+01   anorm = 2.7e+01   arnorm = 6.4e-07
+itn   =      11   r2norm = 1.2e+01   acond = 1.2e+02   xnorm  = 4.6e+00
+ 
+  Solver completed in 0.00 seconds
+  Iterations: 11
+  Residual norm: 1.202093e+01
+  Status: 2
+
+Objective breakdown:
+  Reconstruction error: 1.919468e+02
+  Symmetry defect: 4.859818e+00
+  Total objective: 1.943767e+02
+
+  T_new shape: (4, 5)
+
+6. Computing symmetry defect for equivariant T_new...
+----------------------------------------------------------------------
+  Symmetry defect (T_new): ||T_new J^A - J^B T_new||_F = 2.204499e+00
+
+7. Comparison: T_old (baseline) vs T_new (equivariant)...
+----------------------------------------------------------------------
+
+  T_old (Baseline - Pseudoinverse):
+    Reconstruction error: 7.373728e+01
+    Symmetry defect²:     3.029164e+02
+    Total objective:      2.251955e+02
+
+  T_new (Equivariant Solver, λ=0.5):
+    Reconstruction error: 1.919468e+02
+    Symmetry defect²:     4.859818e+00
+    Total objective:      1.943767e+02
+
+  Improvements:
+    Total objective: +13.69%
+    Symmetry defect: +98.40%
+
+8. Running verification tests...
+----------------------------------------------------------------------
+  ✓ Generator shapes: PASS
+  ✓ Solver completion: PASS
+  ✓ Symmetry defect reduction: PASS (reduced by 98.40%)
+  ✓ Total objective improvement: PASS
+  ✓ Numerical stability: PASS
+
+  Tests passed: 5/5
+
+9. Saving results...
+----------------------------------------------------------------------
+  Saved generators to: D:\GitHub\transition-matrix-lie-group\outputs\data\synthetic_generators.npz
+  Saved test results to: D:\GitHub\transition-matrix-lie-group\outputs\results\methodology_verification.json
+
+======================================================================
+STEP 3 VERIFICATION SUMMARY
+======================================================================
+
+✓ Generator estimation: Successfully computed J^A and J^B
+✓ Equivariant solver: Successfully solved for T_new
+✓ Symmetry defect: Reduced from 1.740449e+01 to 2.204499e+00
+  (+98.40% improvement)
+✓ Total objective: +13.69% improvement
+
+✓ All 5 tests PASSED!
+
+Step 3 (Methodology Implementation) is COMPLETE and VERIFIED.
+
+======================================================================

@@ -36,7 +36,7 @@ np.random.seed(42)
 torch.manual_seed(42)
 
 # Configuration
-DATA_DIR = Path(__file__).parent / "data"
+DATA_DIR = Path(__file__).parent.parent / "outputs" / "data"
 EPSILON = 0.01  # Small rotation angle in radians
 N_SAMPLES = 1000  # Number of samples to use for generator estimation (subset)
 BATCH_SIZE = 100  # Batch size for processing

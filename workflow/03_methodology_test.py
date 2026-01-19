@@ -19,8 +19,10 @@ import time
 from pathlib import Path
 
 # Add workflow directory to path
-session_dir = Path("/app/sandbox/session_20260118_175817_da8f96a1d029")
-sys.path.insert(0, str(session_dir / "workflow"))
+# Add workflow directory to path
+workflow_dir = Path(__file__).parent
+project_root = workflow_dir.parent
+sys.path.insert(0, str(workflow_dir))
 
 from generators import estimate_generators_bridge, compute_symmetry_defect
 from solver import EquivariantSolver, compute_objective
@@ -30,7 +32,7 @@ def main():
     print("=" * 70)
     print("STEP 3: METHODOLOGY VERIFICATION (EQUIVARIANT SOLVER)")
     print("=" * 70)
-    print(f"Session directory: {session_dir}")
+    print(f"Project root: {project_root}")
     print(f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     print()
 
@@ -40,7 +42,7 @@ def main():
     print("1. Loading synthetic data...")
     print("-" * 70)
 
-    synthetic_path = session_dir / "workflow/data/synthetic.npz"
+    synthetic_path = project_root / "data/synthetic.npz"
     data = np.load(synthetic_path)
     A = data['A']  # Formal model features: 15 × 5
     B = data['B']  # Mental model features: 15 × 4
@@ -224,7 +226,10 @@ def main():
     print("-" * 70)
 
     # Save generators
-    generators_path = session_dir / "workflow/data/synthetic_generators.npz"
+    # Save generators
+    output_data_dir = project_root / "outputs/data"
+    output_data_dir.mkdir(parents=True, exist_ok=True)
+    generators_path = output_data_dir / "synthetic_generators.npz"
     np.savez(
         generators_path,
         J_A=J_A,
@@ -289,7 +294,9 @@ def main():
         }
     }
 
-    results_path = session_dir / "results/methodology_verification.json"
+    results_dir = project_root / "outputs/results"
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results_path = results_dir / "methodology_verification.json"
     with open(results_path, 'w') as f:
         json.dump(results, f, indent=2)
     print(f"  Saved test results to: {results_path}")

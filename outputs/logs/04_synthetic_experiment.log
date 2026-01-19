@@ -1,0 +1,63 @@
+C:\Users\radiu\AppData\Roaming\Python\Python313\site-packages\sklearn\manifold\_mds.py:677: FutureWarning: The default value of `n_init` will change from 4 to 1 in 1.9.
+  warnings.warn(
+================================================================================
+STEP 4: SYNTHETIC EXPERIMENT - ROBUSTNESS TEST (CORRECTED)
+================================================================================
+
+[1/6] Loading synthetic data and computed matrices...
+  A shape: (15, 5)
+  B shape: (15, 4)
+  T_old shape: (4, 5)
+  T_new shape: (4, 5)
+
+[2/6] Re-implementing the Bridge (MDS + Linear Decoders)...
+  Fitting MDS on A to obtain 2D latent space...
+  Z shape: (15, 2)
+  MDS stress: 2.6214
+  Training decoder Z → A...
+  Decoder A reconstruction MSE: 0.036831
+  Training decoder Z → B...
+  Decoder B reconstruction MSE: 1.594314
+
+[3/6] Generating rotated data...
+  Applying 15 random rotations (alpha in [-15°, 15°])...
+    Progress: 5/15 rotations applied
+    Progress: 10/15 rotations applied
+    Progress: 15/15 rotations applied
+  A_rot shape: (15, 5)
+  B_rot shape: (15, 4)
+  Rotation angles (degrees): min=-14.38, max=14.10
+
+[4/6] Computing predictions with both methods...
+  B_pred_old shape: (15, 4)
+  B_pred_new shape: (15, 4)
+
+[5/6] Calculating metrics...
+  MSE (Baseline/Old): 0.008160
+  MSE (Equivariant/New): 1.357639
+  Difference: 1.349479 (positive = new is worse)
+  Ratio (New/Old): 166.38x
+
+[6/6] Generating visualization with ground truth...
+  PCA explained variance ratio: [0.66289102 0.23455861]
+  Figure saved to: D:\GitHub\transition-matrix-lie-group\outputs\figures\synthetic_robustness_corrected.png
+
+Saving corrected metrics to JSON...
+  Results saved to: D:\GitHub\transition-matrix-lie-group\outputs\results\synthetic_experiment_corrected.json
+
+================================================================================
+EXPERIMENT COMPLETE (CORRECTED INTERPRETATION)
+================================================================================
+✓ MSE (Baseline): 0.008160 ← BETTER (lower error)
+✓ MSE (Equivariant): 1.357639 ← WORSE (higher error)
+✓ Error Ratio: 166.4x (equivariant is ~166x worse)
+
+✓ SCIENTIFIC INTERPRETATION:
+  - Baseline outperforms equivariant on this linearly-generated synthetic data
+  - This is expected: linear data generation favors unconstrained linear models
+  - Equivariant constraints don't match the linear generation process
+  - Visualization shows baseline matches ground truth, equivariant does not
+
+✓ Figure (3 panels): D:\GitHub\transition-matrix-lie-group\outputs\figures\synthetic_robustness_corrected.png
+✓ Corrected Metrics: D:\GitHub\transition-matrix-lie-group\outputs\results\synthetic_experiment_corrected.json
+================================================================================

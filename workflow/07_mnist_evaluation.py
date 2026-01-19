@@ -41,9 +41,9 @@ np.random.seed(42)
 torch.manual_seed(42)
 
 # Configuration
-DATA_DIR = Path(__file__).parent / "data"
-RESULTS_DIR = Path(__file__).parent.parent / "results"
-FIGURES_DIR = Path(__file__).parent.parent / "figures"
+DATA_DIR = Path(__file__).parent.parent / "outputs" / "data"
+RESULTS_DIR = Path(__file__).parent.parent / "outputs" / "results"
+FIGURES_DIR = Path(__file__).parent.parent / "outputs" / "figures"
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # Rotation experiment parameters
